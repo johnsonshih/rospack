@@ -62,14 +62,14 @@
   #pragma warning(disable:4820) // structs and padding
 #endif
 
-#ifdef ROS_BUILD_STATIC_LIBS // ros is being built around shared libraries
-  #define ROSPACK_DECL
-#else // ros is being built around shared libraries
+#ifdef ROS_BUILD_SHARED_LIBS // ros is being built around shared libraries
   #ifdef rospack_EXPORTS // we are building a shared lib/dll
     #define ROSPACK_DECL ROS_HELPER_EXPORT
   #else // we are using shared lib/dll
     #define ROSPACK_DECL ROS_HELPER_IMPORT
   #endif
+#else // ros is being built around static libraries
+  #define ROSPACK_DECL
 #endif
 
 #endif /* ROSPACK_MACROS_H_ */
